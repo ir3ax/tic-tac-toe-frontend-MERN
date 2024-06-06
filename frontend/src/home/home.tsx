@@ -22,11 +22,11 @@ const Home: React.FC = () => {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    axios.get<Game[]>(`${process.env.REACT_APP_API_URL}/games`).then(response => setGames(response.data));
+    axios.get<Game[]>(`${import.meta.env.VITE_API_URL}/games`).then(response => setGames(response.data));
   }, []);
 
   return (
-    <div className='w-full min-h-[90dvh] flex flex-col justify-center items-center pb-24'>
+    <div className='w-full min-h-[90dvh] flex flex-col justify-center items-center pb-20'>
       <div className='mt-10 w-[30%] max-sm:w-[95%] md:w-[70%] max-md:w-[70%] flex justify-center items-center'>
           <img src={TicTacToeLogo} className='w-40 h-40' alt='Tic-Tac-Toe Logo' />
       </div>

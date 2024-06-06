@@ -27,7 +27,7 @@ const Game: React.FC = () => {
   const [winningLine, setWinningLine] = useState<number[] | null>(null);
 
   useEffect(() => {
-    axios.get<GameData>(`${process.env.REACT_APP_API_URL}/games/${id}`).then(response => {
+    axios.get<GameData>(`${import.meta.env.VITE_API_URL}/games/${id}`).then(response => {
       const gameData = response.data;
       setGame({ ...gameData, rounds: gameData.rounds || 1 });
     });
@@ -96,7 +96,7 @@ const Game: React.FC = () => {
         game.player2.draws++;
       }
 
-      axios.put(`${process.env.REACT_APP_API_URL}/games/${id}`, game).then(() => {
+      axios.put(`${import.meta.env.VITE_API_URL}/games/${id}`, game).then(() => {
         navigate('/');
       });
     }
@@ -125,7 +125,7 @@ const Game: React.FC = () => {
       setBoard(Array(9).fill(null));
       setIsPlayer1Turn(true);
 
-      axios.put<GameData>(`${process.env.REACT_APP_API_URL}/games/${id}`, game).then(response => {
+      axios.put<GameData>(`${import.meta.env.VITE_API_URL}/games/${id}`, game).then(response => {
         setGame(response.data);
       });
     }
@@ -161,7 +161,7 @@ const Game: React.FC = () => {
         game.player2.draws++;
       }
 
-      axios.put(`${process.env.REACT_APP_API_URL}/games/${id}`, game).then(() => {
+      axios.put(`${import.meta.env.VITE_API_URL}/games/${id}`, game).then(() => {
         navigate('/new');
       });
     }

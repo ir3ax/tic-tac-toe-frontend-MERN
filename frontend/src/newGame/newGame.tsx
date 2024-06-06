@@ -10,7 +10,7 @@ const NewGame = () => {
   const navigate = useNavigate();
 
   const startGame = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/games`, { player1, player2 }).then(response => {
+    axios.post(`${import.meta.env.VITE_API_URL}/games`, { player1, player2 }).then(response => {
       navigate(`/game/${response.data._id}`);
     });
   };
